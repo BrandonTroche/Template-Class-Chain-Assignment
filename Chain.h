@@ -11,9 +11,10 @@ Last Edited: 2/18/16
 #define CSCI335_HOMEWORK1_CHAIN_
 #include <cstddef>
 #include <iostream>
+#include <string>
 using namespace std;
 
-// Place comments that provide a brief explanation of the class.
+// Comments have been provided as a brief explanation of the class.
 template<typename Object>
 class Chain {
  public:
@@ -31,7 +32,14 @@ class Chain {
   Chain operator+(Object &&rhs); //+ overload for R-Values
   Object& operator[](Object &&i); //[] overload for indexing 
 
-  friend std::ostream& operator<<(std::ostream& out, const Chain &rhs); //"<<" Overload for output stream
+  friend std::ostream& operator<<(std::ostream& out, const Chain<Object> &rhs) {
+    out<<"[ ";
+      for(int i=0; i<rhs.size_; i++)
+        out<<rhs.array_[i];
+    out<<" ]";
+
+  return out;
+  } //"<<" Overload for output stream
 
 
   void value(){ //Prints the value of all items in the array_
@@ -39,17 +47,17 @@ class Chain {
        cout<<array_[i]<<endl;
   }
  
-  size_t Size(){ //Returns the size_ of the array_ of that Chain.
+  int Size() const { //Returns the size_ of the array_ of that Chain.
     return size_;
   }
 
   void ReadChain(){ //Reads a Chain of size 4, still a placeholder function
     cout<<"Please enter a chain (assuming size 4): ";
-    int tempArray[4] = {};
+    Object tempArray[4] = {};
     cin>>tempArray[0]>>tempArray[1]>>tempArray[2]>>tempArray[3];
-    for(int i=0; i<3; i++){
+    for(int i=0; i<=3; i++){
       array_[i] = tempArray[i];
-      cout<<array[i]<<" ";
+      cout<<array_[i]<<" ";
     }
     cout<<endl;
   }
@@ -60,8 +68,6 @@ class Chain {
   //   for(auto &v : lst)
   //     array_[i++] = std::move(v);
   // }
-
-  //Destructor for the class
  
 
 
@@ -75,7 +81,7 @@ class Chain {
 template<typename Object>
   Chain<Object>::Chain() {
     size_ = 0;
-    array_ = new int[50];
+    array_ = new Object[10];
 
     cout<<"No parameter constructor works\n";
   }
@@ -84,7 +90,7 @@ template<typename Object>
 template<typename Object>
   Chain<Object>::Chain(const int &&firstParameter){
     size_ = 1;
-    array_ = new int[50];
+    array_ = new Object[10];
 
     array_[0] = firstParameter;
 
@@ -94,16 +100,16 @@ template<typename Object>
 //Copy Constructor
 template<typename Object>
   Chain<Object>::Chain(const Chain &rhs) {
-    array_ = new int {*rhs.array_};
+    array_ = new Object {*rhs.array_};
   }
 
 //Overload of '=' - Copy assignment Operator
 template<typename Object>
   Chain<Object>& Chain<Object>::operator=(const Chain<Object> &rhs){
     if (this != &rhs){
-      //I want this to work: *array_ = *rhs.array_; 
+      //I want this to work the way this would: *array_ = *rhs.array_; 
       delete array_;
-      array_ = new int[50];
+      array_ = new Object[10];
 
         for (int i=0; i<size_; i++){
           array_[i] = rhs.array_[i];
@@ -144,11 +150,11 @@ template<typename Object>
 //Overload for + as concatenation for chain object
 template<typename Object>
   Chain<Object> Chain<Object>::operator+(const Chain<Object> &rhs){
-    Chain<Object> newChain{this};
+    Chain<Object> newChain{*this};
     int oldSize = newChain.Size();
-    newChain.size_ = oldSize + rhs.Size();
+    newChain.size_ = oldSize + *rhs.Size();
     int i = 0;
-      for(oldSize; oldSize<newChain.Size(); oldSize++){
+      for( ; oldSize<newChain.Size(); oldSize++){
          newChain.array_[oldSize] = rhs.array_[i]; 
         i++;
       }
@@ -171,10 +177,10 @@ template<typename Object>
   Object& Chain<Object>::operator[](Object &&i){
     return array_[i];
   }
+/*
 
-//ostream '<<' Overload for output
-template<typename Object>
-  std::ostream& operator<<(std::ostream& out, const Chain<Object> &rhs){
+template<typename Object2>
+  std::ostream& operator<<(std::ostream& out, const Chain<Object2> &rhs){
     out<<"[ ";
       for(int i=0; i<rhs.size_; i++)
         out<<rhs.array_[i];
@@ -183,7 +189,7 @@ template<typename Object>
   return out;
 
   }
-
+*/
 
 
 

@@ -11,6 +11,11 @@ I have completed the following steps of the assignment:
 	- Move Constructor
 	- Move Assignment Operator
 	- Destructor
+ - Size() is completed
+ - ReadChain() is completed
+
+————————————[There is some trouble with]————————————
+
  - Implementation of the ostream overload for the << operator. 
  - Implementation of + overload operator
  - Implementation of [] overload operator
@@ -18,17 +23,18 @@ I have completed the following steps of the assignment:
 ________________________________________________________
 ——————[Comments on my work and a few difficulties]——————
 
-My difficulties in this assignment were closely related to working with the templates. I am not very familiar with the syntax for template classes and figuring out the correct way to add member functions to the class using the template took quite some time and headache. While this code looks fine to me, it does not compile for me when I use the first TestFunction as it gives me an error saying I did not give a definition to an operator that is clearly defined. 
+My difficulties in this assignment were closely related to working with the templates. I am not very familiar with the syntax for template classes and figuring out the correct way to add member functions to the class using the template took quite some time and headache. 
 
-The error - “Undefined symbols for architecture x86_64:
-  "operator<<(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, Chain<int> const&)", referenced from:
-      TestPart1() in TestChain.o”
+########********————[Errors]————********########
+*** My code compiles when the TestPart2() function is commented out. It however gives me errors when the code is not commented out. Errors I did not have time to fix that seem to be trouble with my overloaded functions and some type definition issues with the templates that are used in those overloads. ***
 
-I am not completely sure why this is, but I had this error earlier and it was due to using the wrong syntax for creating a constructor using templates. I am not sure what could be wrong and searches for this error come inconclusive as most errors of the same type seem to be associated with xCode, and while I do have xCode I use Clang++ to compile. 
+*** The ‘<<‘ overload is giving me issues. It seems to output just fine however it outputs infinitely many 0’s until it hits a segmentation fault and I can’t seem to figure out why. ***
 
-The last problem is with a small warning I get saying that a variable I have in one of my loops is not used, when it is clearly used and incremented etc…
+*** The ‘+’ operator also does seem to do what I need it to do and the ‘[]’ operator does not have any exceptions or throws as I did not have time to implement this and also was not taught the use of such things in 235, and I understand I must go back and study them.***
 
-Overall this assignment was great practice for template classes and implementation of the Big Five. 
+—————————————————[Overall]———————————————————————
+
+Overall this assignment was great practice for template classes and implementation of the Big Five. My overloads seemed to be where the code crashed down on me, but the big five implementations all work so far as I can tell, and the overloaded operators almost work. I’m at least proud I was able to get it work as far as I could, but I need to do better for the next assignment. 
 
 _______________________________________________________
 

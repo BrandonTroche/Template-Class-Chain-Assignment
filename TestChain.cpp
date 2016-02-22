@@ -8,6 +8,7 @@ Last Edited: 2/18/16
 
 #include "Chain.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 void TestPart1() {
@@ -49,18 +50,30 @@ cout << e;
 
 // void TestPart2() {
 // Chain<string> a, b;
+
 // a.ReadChain(); // User provides input for Chain a.
+
 // cout << a;
-// b.ReadChain(); // User provides input for Chain b. cout << b << endl;
+
+// b.ReadChain(); // User provides input for Chain b. 
+// cout << b << endl;
+
 // cout << a + b << endl; // Concatenates the two Chains.
-// Chain<string> d = a + b; cout << d;
-// cout << d + “hi_there”; // Adds an element to the end.
+
+// Chain<string> d = a + b; 
+// cout << d;
+
+// cout << d + "hi_there"; // Adds an element to the end.
+
 // cout << a[2] << endl; // Should print the 3rd element.
-// // Throw an exception (or even abort()) if is out of
-// // range.
-// b[1] = “b_string”; // Should change the 2nd element to “b_string”
+// 					  // Throw an exception (or even abort()) if is out of
+// 					  // range.
+
+// b[1] = "b_string"; // Should change the 2nd element to “b_string”
 // cout << b;
-// b[0] = “a_string”; cout << b;
+// b[0] = "a_string"; 
+// cout << b;
+
 // } // End of TestPart2
 
 int main(int argc, char **argv) {
